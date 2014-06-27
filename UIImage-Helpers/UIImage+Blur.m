@@ -45,9 +45,11 @@
     error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
     
     if (!error) {
-        error = vImageBoxConvolve_ARGB8888(&outBuffer, &inBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
+        // unknown error, needs to fix
+        //error = vImageBoxConvolve_ARGB8888(&outBuffer, &inBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
     }
     
+    CFRelease(inBitmapData);
     if (error) {
 #ifdef DEBUG
         NSLog(@"%s error: %zd", __PRETTY_FUNCTION__, error);
@@ -74,9 +76,8 @@
     CGColorSpaceRelease(colorSpace);
     
     free(pixelBuffer);
-    CFRelease(inBitmapData);
     
-    CGColorSpaceRelease(colorSpace);
+    //CGColorSpaceRelease(colorSpace);
     CGImageRelease(imageRef);
     
     return returnImage;
